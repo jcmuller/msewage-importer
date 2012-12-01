@@ -8,11 +8,40 @@ Command line tool to import a CSV file into mSewage (msewage.org)
 
 ## Usage
 
-    $ msewage-importer -T[source_type] [source]
+    $ msewage-importer -T[source_type] [source.json]
+
+Currently, the following source types are supported:
+* open_defecation_site
+* toilet
+* latrine
+* septic_tank
+* sewage_outflow
+* manure
+* industrial_waste
+* open_sewage
 
 ## Help
 
     $ msewage-importer --help
+
+## Type of data supported
+
+At this moment, only JSON data sources are supported. These sources should conform to the
+following format [mSewage API](http://data.mwater.co/msewage/apiv2#2)
+
+```json
+{
+  "sources": [
+    {
+      "name": "optional",
+      "description": "optional",
+      "location": "location string. Required."
+    },
+    ...
+  ]
+}
+
+```
 
 ## Contributing
 
