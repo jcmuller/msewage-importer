@@ -43,6 +43,8 @@ following format [mSewage API](http://data.mwater.co/msewage/apiv2#2)
 
 ```
 
+The data might come from a script like [this one](https://github.com/tlevine/pri-toilet-hackers).
+
 ## Contributing
 
 1. Fork it
