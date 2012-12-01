@@ -1,6 +1,7 @@
 # Msewage::Importer
 
-Command line tool to import a CSV file into mSewage (msewage.org)
+Command line tool to import a CSV file into mSewage (msewage.org). It is able to import one
+kind of source at a time.
 
 ## Installation
 
@@ -8,7 +9,7 @@ Command line tool to import a CSV file into mSewage (msewage.org)
 
 ## Usage
 
-    $ msewage-importer -T[source_type] [source.json]
+    $ msewage-importer --type [source_type] --source [source.json]
 
 Currently, the following source types are supported:
 * open_defecation_site
