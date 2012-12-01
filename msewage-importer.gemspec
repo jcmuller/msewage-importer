@@ -15,6 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Msewage::Importer::VERSION
 
+  gem.add_dependency("hashie")
   gem.add_dependency("command_line_helper")
 
   gem.add_development_dependency("rake")

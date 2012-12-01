@@ -1,7 +1,6 @@
 require "msewage-importer/version"
 
-module Msewage
-  module Importer
-    # Your code goes here...
-  end
+module Msewage::Importer
+  autoload :CLI, 'msewage-importer/cli'
+  autoload :Config, 'msewage-importer/config'
 end
