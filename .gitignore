@@ -6,8 +6,10 @@
 Gemfile.lock
 InstalledFiles
 _yardoc
+config/config.yml
 coverage
 doc/
+gems.tags
 lib/bundler/man
 pkg
 rdoc
@@ -15,5 +17,3 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
-
-config/config.yml
