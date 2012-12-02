@@ -15,8 +15,10 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Msewage::Importer::VERSION
 
+  gem.add_dependency("geocoder")
   gem.add_dependency("hashie")
   gem.add_dependency("command_line_helper")
+  gem.add_dependency("uuid")
 
   gem.add_development_dependency("rake")
   gem.add_development_dependency("guard")
@@ -24,4 +26,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency("guard-ctags-bundler")
   gem.add_development_dependency("guard-rspec")
   gem.add_development_dependency("terminal-notifier-guard")
+  gem.add_development_dependency("pry-debugger")
 end

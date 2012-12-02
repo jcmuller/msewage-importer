@@ -6,8 +6,7 @@ module Msewage::Importer
       type :json
 
       def import
-        puts "Loading #{file_name}"
-        puts ::JSON.parse(File.read(file_name))
+        ::JSON.parse(File.read(file_name))["sources"]
       end
     end
   end

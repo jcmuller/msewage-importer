@@ -1,7 +1,6 @@
 module Msewage::Importer
   module Importers
     class Base
-
       class << self
         def type(*file_types)
           file_types.each do |file_type|
@@ -10,7 +9,7 @@ module Msewage::Importer
         end
 
         def factory(file_name)
-          load_importers
+          #load_importers
           importers.each_pair do |extension, class_name|
             if file_name =~ %r{#{extension}}
               return class_name.new(file_name)
@@ -19,10 +18,10 @@ module Msewage::Importer
         end
 
         def load_importers
-          dirname = File.dirname(__FILE__)
-          Dir[File.join(dirname, "*.rb")].each do |f|
-            require f.gsub(%r{#{dirname}/lib/}, '').gsub(/.rb/, '') unless f =~ /base/
-          end
+          #dirname = File.dirname(__FILE__)
+          #Dir[File.join(dirname, "*.rb")].each do |f|
+          #  require f.gsub(%r{#{dirname}/lib/}, '').gsub(/.rb/, '') unless f =~ /base/
+          #end
         end
 
         def importers
@@ -44,4 +43,9 @@ module Msewage::Importer
 
     end
   end
+end
+
+dirname = File.dirname(__FILE__)
+Dir[File.join(dirname, "*.rb")].each do |f|
+  require f.gsub(%r{#{dirname}/lib/}, '').gsub(/.rb/, '') unless f =~ /base/
 end

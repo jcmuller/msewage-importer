@@ -57,8 +57,7 @@ module Msewage::Importer
         when '--verbose'
           options[:verbose] = true
         when '--version'
-          puts version_info
-          exit
+          show_version_info_and_exit
         when '--types'
           show_types_and_exit
         when '--type'
@@ -73,21 +72,13 @@ module Msewage::Importer
       @cli_options ||= GetoptLong.new(*options_possible.map{ |o| o.first(3) })
     end
 
-    def types_supported
-      %w(
-        industrial_waste
-        latrine
-        manure
-        open_defecation_site
-        open_sewage
-        septic_tank
-        sewage_outflow
-        toilet
-      )
+    def show_types_and_exit
+      puts "  " << SourceTypes.types_supported * "\n  "
+      exit
     end
 
-    def show_types_and_exit
-      puts types_supported * ", "
+    def show_version_info_and_exit
+      puts version_info
       exit
     end
 
