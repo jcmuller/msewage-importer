@@ -10,6 +10,7 @@ module Msewage::Importer
     def insert(record)
       res = HTTParty.put(new_source_url, body: new_source_body(record))
       !res["code"].nil?
+      print "."
     end
 
     private

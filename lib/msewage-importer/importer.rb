@@ -63,6 +63,7 @@ module Msewage::Importer
       sources.each do |source|
         import_source(source)
       end
+      puts
     end
 
     def import_source(source)
