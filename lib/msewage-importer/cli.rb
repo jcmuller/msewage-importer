@@ -16,6 +16,10 @@ module Msewage::Importer
       run
     end
 
+    private
+
+    attr_reader :options
+
     def setup
       set_program_name
       process_command_line_options
@@ -24,10 +28,6 @@ module Msewage::Importer
       puts "Run #{program_name} --help to see the available options"
       exit
     end
-
-    private
-
-    attr_reader :options
 
     def run
       Importer.new(options).import
