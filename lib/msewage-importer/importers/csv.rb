@@ -17,7 +17,8 @@ module Msewage::Importer
 
       def build_hash(headers, sources)
         [].tap do |array_with_sources|
-          sources.each_with_object({}) do |line, source|
+          sources.each do |line|
+            source = {}
             line.each_with_index do |data, i|
               source[headers[i]] = data
             end
