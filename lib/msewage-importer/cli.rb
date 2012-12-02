@@ -2,15 +2,18 @@ require 'getoptlong'
 require 'command_line_helper'
 
 module Msewage::Importer
+  # Public: Entry point for command line interface
   class CLI
     include CommandLineHelper::HelpText
 
     class << self
+      # Public: entry point for class
       def run
         self.new.setup_and_run
       end
     end
 
+    # Public: setup and run
     def setup_and_run
       setup
       run
@@ -20,6 +23,7 @@ module Msewage::Importer
 
     attr_reader :options
 
+    # Private: set up program name and process command line options
     def setup
       set_program_name
       process_command_line_options
@@ -29,10 +33,12 @@ module Msewage::Importer
       exit
     end
 
+    # Private: do some more!
     def run
       Importer.new(options).import
     end
 
+    # Private: Command line options
     def options_possible
       [
         ['--config',  '-c', GetoptLong::REQUIRED_ARGUMENT, 'Override the configuration file'],
@@ -45,6 +51,7 @@ module Msewage::Importer
       ]
     end
 
+    # Private:
     def process_command_line_options
       @options = {}
 
@@ -68,20 +75,24 @@ module Msewage::Importer
       end
     end
 
+    # Private:
     def cli_options
       @cli_options ||= GetoptLong.new(*options_possible.map{ |o| o.first(3) })
     end
 
+    # Private:
     def show_types_and_exit
       puts "  " << SourceTypes.types_supported * "\n  "
       exit
     end
 
+    # Private:
     def show_version_info_and_exit
       puts version_info
       exit
     end
 
+    # Private:
     def version_info
       <<-EOV
 #{program_name}, version #{version}
@@ -91,15 +102,18 @@ http://github.com/jcmuller/msewage-importer
   EOV
     end
 
+    # Private:
     def version
       VERSION
     end
 
+    # Private:
     def show_help_and_exit
       STDOUT.puts help_info
       exit
     end
 
+    # Private:
     def set_program_name
       $0 = "#{File.basename($0)} (#{version})"
     end
