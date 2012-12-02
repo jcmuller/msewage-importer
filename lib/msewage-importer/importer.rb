@@ -24,10 +24,7 @@ module Msewage::Importer
       assert
       importer = source_importer
       sources = importer.import
-
       import_sources(sources)
-      #source = sources.first
-
     rescue NoTypeSpecified, NoSourceSpecified, InvalidTypeSpecified => e
       STDERR.puts e
       exit
@@ -66,7 +63,6 @@ module Msewage::Importer
       sources.each do |source|
         import_source(source)
       end
-      #import_source sources.last
     end
 
     def import_source(source)
