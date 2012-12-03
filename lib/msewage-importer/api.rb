@@ -23,8 +23,8 @@ module Msewage::Importer
       {
         created_by: user_name,
         desc: record["desc"] || record["description"],
-        latitude: record["latitude"],
-        longitude: record["longitude"],
+        latitude: record["latitude"] || record["lat"],
+        longitude: record["longitude"] || record["lon"],
         name: record["name"],
         source_type: record["source_type"]
       }
