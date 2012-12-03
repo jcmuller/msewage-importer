@@ -12,14 +12,16 @@ kind of source at a time.
     $ msewage-importer --type [source_type] --source [source.json]
 
 Currently, the following source types are supported:
-* open_defecation_site
-* toilet
+* animal_manure
+* combined_sewer_outflow
+* industrial_waste_outflow
 * latrine
-* septic_tank
-* sewage_outflow
-* manure
-* industrial_waste
-* open_sewage
+* open_defecation_site
+* open_sewage_canal_or_puddle
+* raw_sewage_outflow
+* septic_tank_cesspool
+* toilet
+* treatment_plant_outflow
 
 ## Help
 
@@ -27,24 +29,50 @@ Currently, the following source types are supported:
 
 ## Type of data supported
 
-At this moment, only JSON data sources are supported. These sources should conform to the
+At this moment, only JSON and CSV data sources are supported. These sources should conform to the
 following format [mSewage API](http://data.mwater.co/msewage/apiv2#2)
 
+The entries might already be geocoded. If they aren't, we will attempt to do so.
+
+The data might come from a script like [this one](https://github.com/tlevine/pri-toilet-hackers).
+
+### JSON
 ```json
 {
   "sources": [
     {
+      // Type with a location string that will be geocoded
       "name": "optional",
-      "description": "optional",
-      "location": "location string. Required."
+      "desc": "optional",
+      "location": "location string. "
     },
+    {
+      // Type that will not be geocoded
+      "name": "optional",
+      "desc": "optional",
+      "latitude": 0.00000,
+      "longitude": 0.00000
+    }
     ...
   ]
 }
-
 ```
 
-The data might come from a script like [this one](https://github.com/tlevine/pri-toilet-hackers).
+### CSV
+
+```csv
+name,desc,location
+Optional name,Optional description,"Some place, some town, some country"
+```
+
+or
+
+```csv
+name,desc,latitude,longitude
+Optional name,Optional description,0.0000,0.0000
+```
+
+The heading row is *required*.
 
 ## Contributing
 
