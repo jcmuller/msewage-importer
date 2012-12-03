@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "msewage-importer"
   gem.require_paths = ["lib"]
   gem.version       = Msewage::Importer::VERSION
+  gem.license       = "MIT"
 
   gem.add_dependency("geocoder")
   gem.add_dependency("hashie")
