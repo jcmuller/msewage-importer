@@ -42,9 +42,11 @@ module Msewage::Importer
       [
         ['--config',  '-c', GetoptLong::REQUIRED_ARGUMENT, 'Override the configuration file'],
         ['--help',    '-h', GetoptLong::NO_ARGUMENT,       'Show this text'],
+        ['--password', '-p', GetoptLong::REQUIRED_ARGUMENT, 'mSewage.org password'],
         ['--source',  '-s', GetoptLong::REQUIRED_ARGUMENT, 'Source file with data to import'],
         ['--type',    '-t', GetoptLong::REQUIRED_ARGUMENT, 'Type of defecation site sources to import'],
         ['--types',   '-T', GetoptLong::NO_ARGUMENT,       'Show type of defecation sites available'],
+        ['--username', '-u', GetoptLong::REQUIRED_ARGUMENT, 'mSewage.org user name'],
         ['--verbose', '-v', GetoptLong::NO_ARGUMENT,       'Be extremely verbose'],
         ['--version', '-V', GetoptLong::NO_ARGUMENT,       'Show version info'],
       ]
@@ -68,6 +70,12 @@ module Msewage::Importer
           show_types_and_exit
         when '--type'
           options[:type] = arg
+        when '--username'
+          options[:msewage] ||= {}
+          options[:msewage][:username] = arg
+        when '--password'
+          options[:msewage] ||= {}
+          options[:msewage][:password] = arg
         when '--source'
           options[:source] = arg
         end
