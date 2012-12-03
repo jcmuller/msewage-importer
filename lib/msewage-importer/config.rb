@@ -3,12 +3,33 @@ require "yaml"
 
 module Msewage::Importer
   class Config
-    def initialize(path = default_config_file_path)
-      @config = Hashie::Mash.new(config_file(path))
+    def initialize(options)
+      setup_config(options)
+      validate_config
     end
 
-    def valid?
-      # TODO
+    def setup_config(options)
+      options_from_config = config_file(config_file_path(options))
+      @config = Hashie::Mash.new
+      config.merge!(options_from_config) unless options_from_config.nil?
+      config.merge!(options)
+    end
+
+    def config_file_path(options)
+      options.delete(:config_file_path) || default_config_file_path
+    end
+
+    def validate_config
+      unless valid_keys?
+        STDERR.puts "Please create a config file in #{default_config_file_path}"
+        STDERR.puts "\nIt should look like:\n\n#{config_file_example}"
+
+        exit 1
+      end
+    end
+
+    def valid_keys?
+      config[:msewage] && config.msewage[:username] && config.msewage[:password]
     end
 
     def override(options = {})
@@ -32,10 +53,6 @@ module Msewage::Importer
     def config_file(config_file_path)
       YAML.load_file(config_file_path)
     rescue Errno::ENOENT
-      STDERR.puts "Please create a config file in #{default_config_file_path}"
-      STDERR.puts "\nIt should look like:\n\n#{config_file_example}"
-
-      exit 1
     end
 
     def config_file_example

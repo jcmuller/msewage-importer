@@ -15,9 +15,8 @@ module Msewage::Importer
     end
 
     def initialize(options)
-      puts options.inspect
-      @config = Config.new(options[:config])
-      config.override(options)
+      @config = Config.new(options)
+      puts options.inspect if config.verbose
     end
 
     def import

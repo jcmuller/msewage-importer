@@ -59,7 +59,7 @@ module Msewage::Importer
         when '--help'
           show_help_and_exit
         when '--config'
-          options[:config] = arg
+          options[:config_file_path] = arg
         when '--verbose'
           options[:verbose] = true
         when '--version'
