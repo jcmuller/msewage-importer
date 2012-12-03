@@ -1,3 +1,4 @@
 verbose: true
-authentication:
-  user: username
+msewage:
+  username: username
+  password: password

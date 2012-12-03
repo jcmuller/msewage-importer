@@ -49,11 +49,11 @@ module Msewage::Importer
     end
 
     def user_name
-      config.msewer.user
+      config.msewage.username
     end
 
     def password
-      config.msewer.password
+      config.msewage.password
     end
 
     def api_endpoint
