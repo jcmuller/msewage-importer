@@ -26,6 +26,7 @@ module Msewage::Importer
       import_sources(sources)
     rescue NoTypeSpecified, NoSourceSpecified, InvalidTypeSpecified => e
       STDERR.puts e
+      STDERR.puts "\nType #{$0} --help"
       exit
     end
 
