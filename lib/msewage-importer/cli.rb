@@ -25,7 +25,6 @@ module Msewage::Importer
 
     # Private: set up program name and process command line options
     def setup
-      set_program_name
       process_command_line_options
     rescue GetoptLong::MissingArgument, GetoptLong::InvalidOption, GetoptLong::AmbiguousOption
       puts
@@ -113,9 +112,5 @@ http://github.com/jcmuller/msewage-importer
       exit
     end
 
-    # Private:
-    def set_program_name
-      $0 = "#{File.basename($0)} (#{version})"
-    end
   end
 end
