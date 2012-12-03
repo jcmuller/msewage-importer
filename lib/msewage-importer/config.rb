@@ -8,6 +8,16 @@ module Msewage::Importer
       validate_config
     end
 
+    def api_endpoint
+      API_ENDPOINT
+    end
+
+    private
+
+    attr_reader :config
+
+    API_ENDPOINT = "http://data.mwater.co/msewage/apiv2"
+
     def setup_config(options)
       options_from_config = config_file(config_file_path(options))
       @config = Hashie::Mash.new
@@ -31,20 +41,6 @@ module Msewage::Importer
     def valid_keys?
       config[:msewage] && config.msewage[:username] && config.msewage[:password]
     end
-
-    def override(options = {})
-      @config.merge!(options)
-    end
-
-    def api_endpoint
-      API_ENDPOINT
-    end
-
-    private
-
-    attr_reader :config
-
-    API_ENDPOINT = "http://data.mwater.co/msewage/apiv2"
 
     def default_config_file_path
       "#{ENV['HOME']}/.config/msewage-importer/config.yml"
