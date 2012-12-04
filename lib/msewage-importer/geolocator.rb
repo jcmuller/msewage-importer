@@ -1,7 +1,7 @@
 require 'geocoder'
 
 # TODO
-# use http://www.geonames.org/
+# use http://www.geonames.org/ -- add to https://github.com/alexreisner/geocoder/tree/master/lib/geocoder/lookups ?
 module Msewage::Importer
   class Geolocator
     def initialize(config = Config.new)
