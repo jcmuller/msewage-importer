@@ -1,5 +1,7 @@
 require 'geocoder'
 
+# TODO
+# use http://www.geonames.org/
 module Msewage::Importer
   class Geolocator
     def initialize(config = Config.new)
