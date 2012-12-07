@@ -8,7 +8,7 @@ module Msewage::Importer
     end
 
     def insert(record)
-      res = HTTParty.put(new_source_url, body: new_source_body(record))
+      res = HTTParty.put(new_source_url, :body => new_source_body(record))
       !res["code"].nil?
       print "."
     end
@@ -21,12 +21,12 @@ module Msewage::Importer
 
     def new_source_body(record)
       {
-        created_by: user_name,
-        desc: record["desc"] || record["description"],
-        latitude: record["latitude"] || record["lat"],
-        longitude: record["longitude"] || record["lon"],
-        name: record["name"],
-        source_type: record["source_type"]
+        :created_by => user_name,
+        :desc => record["desc"] || record["description"],
+        :latitude => record["latitude"] || record["lat"],
+        :longitude => record["longitude"] || record["lon"],
+        :name => record["name"],
+        :source_type => record["source_type"]
       }
     end
 
@@ -35,9 +35,9 @@ module Msewage::Importer
     end
 
     def retrieve_client_uid
-      body = { password: password }
+      body = { :password => password }
       path = "#{api_endpoint}/users/#{user_name}"
-      res = HTTParty.post(path, body: body)
+      res = HTTParty.post(path, :body => body)
       res["clientuid"]
     end
 
